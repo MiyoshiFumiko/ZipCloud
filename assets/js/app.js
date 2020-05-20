@@ -19,7 +19,9 @@ $(function(){
         
         // 入力された郵便番号を取得
         let val = $('#search-word').val();
-
+         
+        $.LoadingOverlay("show");
+        
         // $('#prefecture').text(data.results[0].address1)
         
         // Ajacxを開始（郵便番号APIから住所の情報を取得）
@@ -43,10 +45,10 @@ $(function(){
 
         }).fail((error) => {
             console.error(error)
-        })
-
-        
-            
+           
+        }).always(() => { 
+            $.LoadingOverlay("hide");
+        })            
        
     })
 })
